@@ -1,0 +1,14 @@
+Requesting a certificate for npb.williamsywilliams.net and 49 more domains
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/npb.williamsywilliams.net/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/npb.williamsywilliams.net/privkey.pem
+This certificate expires on 2024-03-05.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

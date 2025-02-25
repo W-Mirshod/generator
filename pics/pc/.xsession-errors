@@ -1,0 +1,89 @@
+Xsession: X session started for pc at Mon Dec 11 21:54:02 EST 2023
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting XAUTHORITY=/home/pc/.Xauthority
+dbus-update-activation-environment: setting XDG_CURRENT_DESKTOP=KDE
+localuser:pc being added to access control list
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting POWERSHELL_TELEMETRY_OPTOUT=1
+dbus-update-activation-environment: setting USER=pc
+dbus-update-activation-environment: setting XDG_SESSION_TYPE=x11
+dbus-update-activation-environment: setting DOTNET_CLI_TELEMETRY_OPTOUT=1
+dbus-update-activation-environment: setting HOME=/home/pc
+dbus-update-activation-environment: setting DESKTOP_SESSION=plasma
+dbus-update-activation-environment: setting GTK_MODULES=gail:atk-bridge
+dbus-update-activation-environment: setting DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+dbus-update-activation-environment: setting COMMAND_NOT_FOUND_INSTALL_PROMPT=1
+dbus-update-activation-environment: setting QT_QPA_PLATFORMTHEME=qt5ct
+dbus-update-activation-environment: setting LOGNAME=pc
+dbus-update-activation-environment: setting QT_AUTO_SCREEN_SCALE_FACTOR=0
+dbus-update-activation-environment: setting XDG_SESSION_CLASS=user
+dbus-update-activation-environment: setting PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+dbus-update-activation-environment: setting _JAVA_OPTIONS=-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true
+dbus-update-activation-environment: setting XDG_RUNTIME_DIR=/run/user/1000
+dbus-update-activation-environment: setting DISPLAY=:0
+dbus-update-activation-environment: setting LANG=C.UTF-8
+dbus-update-activation-environment: setting XDG_CURRENT_DESKTOP=KDE
+dbus-update-activation-environment: setting POWERSHELL_UPDATECHECK=Off
+dbus-update-activation-environment: setting XDG_SESSION_DESKTOP=plasma
+dbus-update-activation-environment: setting XAUTHORITY=/home/pc/.Xauthority
+dbus-update-activation-environment: setting XDG_GREETER_DATA_DIR=/var/lib/lightdm/data/pc
+dbus-update-activation-environment: setting SHELL=/usr/bin/zsh
+dbus-update-activation-environment: setting GDMSESSION=plasma
+dbus-update-activation-environment: setting QT_ACCESSIBILITY=1
+dbus-update-activation-environment: setting GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+dbus-update-activation-environment: setting PWD=/home/pc
+02:54:02.757154 main     VBoxClient 7.0.12 r159484 (verbosity: 0) linux.amd64 (Oct 12 2023 18:54:58) release log
+02:54:02.757156 main     Log opened 2023-12-12T02:54:02.757150000Z
+02:54:02.757184 main     OS Product: Linux
+02:54:02.757188 main     OS Release: 6.5.0-kali3-amd64
+02:54:02.757192 main     OS Version: #1 SMP PREEMPT_DYNAMIC Debian 6.5.6-1kali1 (2023-10-09)
+02:54:02.757196 main     Executable: /opt/VBoxGuestAdditions-7.0.12/bin/VBoxClient
+02:54:02.757196 main     Process ID: 1149
+02:54:02.757196 main     Package type: LINUX_64BITS_GENERIC
+02:54:02.757202 main      VBoxClient 7.0.12 r159484 started. Verbose level = 0. Wayland environment detected: no
+02:54:02.757211 main      Service: Shared Clipboard
+02:54:02.761409 main     VBoxClient 7.0.12 r159484 (verbosity: 0) linux.amd64 (Oct 12 2023 18:54:58) release log
+02:54:02.761412 main     Log opened 2023-12-12T02:54:02.761405000Z
+02:54:02.761442 main     OS Product: Linux
+02:54:02.761451 main     OS Release: 6.5.0-kali3-amd64
+02:54:02.761454 main     OS Version: #1 SMP PREEMPT_DYNAMIC Debian 6.5.6-1kali1 (2023-10-09)
+02:54:02.761458 main     Executable: /opt/VBoxGuestAdditions-7.0.12/bin/VBoxClient
+02:54:02.761459 main     Process ID: 1153
+02:54:02.761459 main     Package type: LINUX_64BITS_GENERIC
+02:54:02.761465 main      VBoxClient 7.0.12 r159484 started. Verbose level = 0. Wayland environment detected: no
+02:54:02.761469 main      Service: VirtualBox host version check
+02:54:02.765466 main     VBoxClient 7.0.12 r159484 (verbosity: 0) linux.amd64 (Oct 12 2023 18:54:58) release log
+02:54:02.765471 main     Log opened 2023-12-12T02:54:02.765462000Z
+02:54:02.765507 main     OS Product: Linux
+02:54:02.765512 main     OS Release: 6.5.0-kali3-amd64
+02:54:02.765516 main     OS Version: #1 SMP PREEMPT_DYNAMIC Debian 6.5.6-1kali1 (2023-10-09)
+02:54:02.765522 main     Executable: /opt/VBoxGuestAdditions-7.0.12/bin/VBoxClient
+02:54:02.765522 main     Process ID: 1161
+02:54:02.765522 main     Package type: LINUX_64BITS_GENERIC
+02:54:02.765528 main      VBoxClient 7.0.12 r159484 started. Verbose level = 0. Wayland environment detected: no
+02:54:02.765531 main      Service: Seamless Mode Support
+02:54:02.770256 main     VBoxClient 7.0.12 r159484 (verbosity: 0) linux.amd64 (Oct 12 2023 18:54:58) release log
+02:54:02.770258 main     Log opened 2023-12-12T02:54:02.770252000Z
+02:54:02.770295 main     OS Product: Linux
+02:54:02.770299 main     OS Release: 6.5.0-kali3-amd64
+02:54:02.770303 main     OS Version: #1 SMP PREEMPT_DYNAMIC Debian 6.5.6-1kali1 (2023-10-09)
+02:54:02.770307 main     Executable: /opt/VBoxGuestAdditions-7.0.12/bin/VBoxClient
+02:54:02.770307 main     Process ID: 1168
+02:54:02.770307 main     Package type: LINUX_64BITS_GENERIC
+02:54:02.770313 main      VBoxClient 7.0.12 r159484 started. Verbose level = 0. Wayland environment detected: no
+02:54:02.770317 main      Service: Drag'n'Drop
+02:54:02.775273 main     VBoxClient 7.0.12 r159484 (verbosity: 0) linux.amd64 (Oct 12 2023 18:54:58) release log
+02:54:02.775275 main     Log opened 2023-12-12T02:54:02.775261000Z
+02:54:02.775312 main     OS Product: Linux
+02:54:02.775317 main     OS Release: 6.5.0-kali3-amd64
+02:54:02.775321 main     OS Version: #1 SMP PREEMPT_DYNAMIC Debian 6.5.6-1kali1 (2023-10-09)
+02:54:02.775331 main     Executable: /opt/VBoxGuestAdditions-7.0.12/bin/VBoxClient
+02:54:02.775332 main     Process ID: 1176
+02:54:02.775332 main     Package type: LINUX_64BITS_GENERIC
+02:54:02.775339 main      VBoxClient 7.0.12 r159484 started. Verbose level = 0. Wayland environment detected: no
+02:54:02.775456 main      Service: VMSVGA display assistant
+QObject: Cannot create children for a parent that is in a different thread.
+(Parent is SplashApp(0x7ffebcf7c900), parent's thread is QThread(0x55b3fe033bd0), current thread is QThread(0x55b3fe51d4c0)
+QObject::installEventFilter(): Cannot filter events for objects in a different thread.

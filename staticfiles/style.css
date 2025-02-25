@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-size: 12px;
+    background-color: rgba(21, 21, 21, 0.8);
+    color:#fff;
+}
+
+h1{
+    margin: 20px;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    /*justify-content: space-between;*/
+    padding: 0px;
+}
+
+.domain-td{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 5px;
+    border: none;
+}
+
+main > div{
+    box-sizing: border-box;
+    padding: 15px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.btn_session_save{
+    width:30%;
+}
+
+
+* table tbody tr td:nth-child(1){
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+table, .im_table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+ table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 3px;
+}
+
+.images_domain table > tbody > tr > td:nth-child(2){
+    width: 70px;
+}
+
+.domains table > tbody > tr > td:nth-child(2){
+    width: 70px;
+}
+
+.btn-delete, .btn-open{
+    background-color: rgba(21, 21, 21, 0.1);
+    color: #fff;
+    font-weight: 700;
+    padding: 6px 8px;
+}
+
+.btn-delete{
+    border-color: rgba(230, 12, 46, 0.8);
+}
+
+.btn-open{
+    border-color: #4CAF50;
+}
+
+.button, .btn_session_save{
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    min-width: fit-content;
+}
+
+.button, .btn_session_save, .btn-open, .btn-delete {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    cursor: pointer;
+} 
+
+form {
+    margin: 10px auto;
+}
+
+input[type="text"], input[type="file"], select, textarea {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 5px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgba(136, 136, 136, 0.57);
+    color: #fff;
+
+} 
+input::-webkit-input-placeholder{
+    color: #fff;
+}
+
+textarea::-webkit-input-placeholder{
+    color: #fff;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+} 
+
+.session_table, .inputs-form{
+    width: 22%;
+}
+
+.paramet{
+    width: 33%;
+}
+
+.domains, .images{
+    width: 22%;
+}
+
+.paramet table{
+    width: 90%;
+}
+
+.images{
+    overflow: hidden;
+}
+
+.images *{
+    width: 100%;
+}
+
+#image-form label{
+    width:40%;
+}
+
+#session-name, #image-file, #domain-file, #domain-file1{
+    width: 68%;
+}
+
+#image-form .button{
+    width: 40%;
+}
+
+#domain-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  #domain-file + label * {
+    pointer-events: none;
+  }
+
+#domain-file1 {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  #domain-file1 + label * {
+    pointer-events: none;
+  }
+
+  label{
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5 px;
+    width: 40%;
+  }
+
+  #image-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  #image-file + label * {
+    pointer-events: none;
+  }
+
+  form > div{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+  }
+
+  #domain-file .button{
+    width: 40%;
+  }
+  #domain-file1 .button{
+    width: 40%;
+  }
+  .btn-save{
+    margin-top: 20px;
+    margin-left: 70%;
+  }
+

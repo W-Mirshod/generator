@@ -1,0 +1,18 @@
+[Unit]
+Description=uWSGI Generator Service
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/var/www/generator
+Environment="PATH=/var/www/generator/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+ExecStart=/var/www/generator/venv/bin/uwsgi --ini /var/www/generator/uwsgi.ini
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=append:/var/log/uwsgi/error.log
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

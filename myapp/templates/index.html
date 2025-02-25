@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Admin Panel</h1>
+<main>
+    <div class="session_table">
+        <h2>Sessions</h2>
+        <form id="session-form" method="POST">
+            {% csrf_token %}
+            <input type="text" id="session-name" placeholder="Session's name ..." name="session_name">
+            <button class="btn_session_save" name="create_session">Create</button>
+            {% if sessions %}
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Session</th>
+                        <th>Open</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody id="session-table">
+                    {% for i in sessions %}
+                        <tr>
+                            {% if i.id == session_selected.id %}
+                                <td><b>{{ i.name }}</b></td>
+                                <td>-</td>
+                            {% else %}
+                                <td>{{ i.name }}</td>
+                                <td>
+                                    <button name='select_session' type='submit' value="{{ i.id }}" class="btn-open">
+                                        Open
+                                    </button>
+                                </td>
+                            {% endif %}
+                            <td>
+                                <button name='delete_session' type='submit' value="{{ i.id }}" class="btn-delete"
+                                        onclick="return confirmSubmission('delete');">Delete
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                </form>
+                <form method="POST">
+                    {% csrf_token %}
+                    <button name="generate" class="button">Preview</button>
+                    <button name="zip" class="button">Zip</button>
+                    <button type="button" onclick="window.location.href='/antired/KvYyftgr2Ov9GjnMpoCG1i2EBWN/'"
+                            class="button">Edit url
+                    </button>
+                </form>
+
+                {% for i in session_selected.get_zips %}
+                    {% if i.done %}
+                        {% if i.error %}
+                            <a href="?error_zip={{ i.id }}" style="color:red;">{{ i.filename }}.zip
+                                ({{ i.get_size }})</a>
+                        {% else %}
+                            <a href="{{ i.get_path }}" style="color:green;">{{ i.filename }}.zip ({{ i.get_size }})</a>
+                        {% endif %}
+                    {% else %}
+                        <div style="color:orange;">{{ i.filename }}.zip ({{ i.get_size }})</div>
+                    {% endif %}
+                    <br>
+                {% endfor %}
+            {% endif %}
+    </div>
+
+
+    {% if session_selected %}
+        <div class="images">
+            <div>
+                <h2>Uploading images</h2>
+                <form id="image-form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div>
+                        <input type="file" id="image-file" name='file' accept="image/*">
+                        <label for="image-file" id='name-file'>Choose file</label>
+                        <button type="submit" name="addimage" class="button">Upload</button>
+                    </div>
+                    <div style="margin-top: 5px">
+                        <input type="text" name='text'>
+                        <button style="margin-left: 5px" type="submit" name="addtext" class="button">Add text</button>
+                    </div>
+
+                    {% if session_selected.get_pictures %}
+                        <table class="im_table" style="margin-top: 5px;">
+                            <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody id="image-table">
+                            {% for i in session_selected.get_pictures %}
+                                {% if i.picture %}
+                                    <tr>
+                                        <td><img src='{{ i.get_path }}' style="width: 90%;"></td>
+                                        <td>{{ i.name }}</td>
+                                        <td>
+                                            <button type="submit" name="delimage" value="{{ i.id }}" class="btn-delete"
+                                                    onclick="return confirmSubmission('delete');">Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="2">{{ i.text }}</td>
+                                        <td>
+                                            <button type="submit" name="delimage" value="{{ i.id }}" class="btn-delete"
+                                                    onclick="return confirmSubmission('delete');">Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </form>
+
+            </div>
+        </div>
+
+        <div class="paramet">
+            <form id="param_input" method="POST">
+                {% csrf_token %}
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Parametr</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody id="parameter-table">
+                    {% for key, value in settings.items %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            {% if value.1 %}
+                                <td><textarea name="{{ key }}">{{ value.0 }}</textarea></td>
+                            {% else %}
+                                <td><input name="{{ key }}" value="{{ value.0 }}" type="text"></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div>
+                    <button type="submit" name="setsettings" class="button btn-save">Save</button>
+                </div>
+                <div>
+                    Example: 82349239423812<br>
+                    ReEx: \d{14}<br>
+                    <br>
+                    Example: DE8283482395<br>
+                    ReEx: DE\d{10}<br>
+                    <br>
+                    Example: DE-XS-23838459<br>
+                    ReEx: DE-\U{2}-\d{8}<br>
+                    <br>
+                    Beispiel: F-33718283<br>
+                    ReEx: F-\d{8}"<br>
+                </div>
+            </form>
+        </div>
+
+        <!--div class="inputs-form">
+            <form id="text-input-form">
+                <input type="text" placeholder=".....">
+                <input type="text" placeholder=".....">
+                <input type="text" placeholder=".....">
+                <input type="text" placeholder=".....">
+                <input type="text" placeholder=".....">
+                <input type="text" placeholder=".....">
+                <textarea placeholder="..."></textarea>
+                <textarea placeholder="..."></textarea>
+                <textarea placeholder="..."></textarea>
+            </form>
+        </div-->
+
+        <div class="domains">
+            <h2>Uploadind IMG-domains</h2>
+            <form id="domain-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <input type="file" name="file" id="domain-file" class="i1" accept=".txt">
+                    <label for="domain-file" id="domain-name" class="l1">Choose file</label>
+                    <button type='submit' name='adddomains' class="button">Upload</button>
+                </div>
+                {% if session_selected.domains.all %}
+                    <table style="margin-top: 5px;">
+                        <thead>
+                        <tr>
+                            <th style="width:125px">Domain</th>
+                            <th>Status</th>
+                            <th>SSL</th>
+                            <th style="width:125px">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="domain-table">
+                        {% for i in session_selected.domains.all %}
+                            <tr>
+                                <td>{{ i.domain }}{% if i.used %} <br><b style="color:red;">USED</b>{% endif %}</td>
+
+                                <td>
+                                    {% if i.valid %}
+                                        <div style="color: green;">Valid</div>{% endif %}
+                                    {% if i.error %}
+                                        <div><a href="?error={{ i.id }}" style="color: red;">ERROR</a></div>{% endif %}
+                                </td>
+
+                                {% if i.ssl %}
+                                    <td style="color: green;">+ ({{ i.get_sub.count }} <a href="?sublist={{ i.id }}"
+                                                                                          style="color: green;">sub</a>)
+                                    </td>
+                                {% else %}
+                                    <td style="color: red;"><b>-</b></td>
+                                {% endif %}
+                                <td class="domain-td">
+                                    <button type="submit" name="checkdomain" value="{{ i.id }}"
+                                            class="{% if i.valid %}btn-open{% else %}button{% endif %}">Check
+                                    </button>{% if i.ssl %}
+                                    <button class="btn-open" disabled>SSL</button>{% else %}
+                                    <button type="submit" name="ssl" value="{{ i.id }}" class="button">SSL
+                                    </button>{% endif %}
+                                    <button type="submit" name="deldomain" value="{{ i.id }}" class="btn-delete"
+                                            onclick="return confirmSubmission('delete');">Delete
+                                    </button>{% if i.used %}
+                                    <button type="submit" name="reuse" value="{{ i.id }}" class="btn-delete">REUSE
+                                    </button>{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="submit" name="checkdomain" value="all" class="button">Check All</button>
+                                <button name="deldomain" value="all" class="btn-delete"
+                                        onclick="return confirmSubmission('delete all');">Delete All
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            </form>
+
+            <hr style="margin-top:20px; margin-bottom: 20px;">
+
+            <h2>Uploadind REDIRECT-domains</h2>
+            <form id="domain-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div>
+                    <input type="file" name="file" id="domain-file1" class="i2" accept=".txt">
+                    <label for="domain-file1" id="domain-name" class="l2">Choose file</label>
+                    <button type='submit' name='addlinks' class="button">Upload</button>
+                </div>
+                {% if session_selected.links.all %}
+                    <table style="margin-top: 5px;">
+                        <thead>
+                        <tr>
+                            <th style="width:125px">Domain</th>
+                            <th>Status</th>
+                            <th>SSL</th>
+                            <th style="width:125px">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="domain-table">
+                        {% for i in session_selected.links.all %}
+                            <tr>
+                                <td>{{ i.domain }}{% if i.used %} <br><b style="color: red;">USED</b>{% endif %}</td>
+
+                                <td>
+                                    {% if i.valid %}
+                                        <div style="color: green;">Valid</div>{% endif %}
+                                    {% if i.error %}
+                                        <div><a href="?error={{ i.id }}" style="color: red;">ERROR</a></div>{% endif %}
+                                </td>
+
+                                {% if i.ssl %}
+                                    <td style="color: green;">+ ({{ i.get_sub.count }} <a href="?sublist={{ i.id }}"
+                                                                                          style="color: green;">sub</a>)
+                                    </td>
+                                {% else %}
+                                    <td style="color: red;"><b>-</b></td>
+                                {% endif %}
+                                <td class="domain-td">
+                                    <button type="submit" name="checkdomain" value="{{ i.id }}"
+                                            class="{% if i.valid %}btn-open{% else %}button{% endif %}">Check
+                                    </button>{% if i.ssl %}
+                                    <button class="btn-open" disabled>SSL</button>{% else %}
+                                    <button type="submit" name="ssl" value="{{ i.id }}" class="button">SSL
+                                    </button>{% endif %}
+                                    <button type="submit" name="dellink" value="{{ i.id }}" class="btn-delete"
+                                            onclick="return confirmSubmission('delete');">Delete
+                                    </button>{% if i.used %}
+                                    <button type="submit" name="reuse" value="{{ i.id }}" class="btn-delete">REUSE
+                                    </button>{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="submit" name="checkdomain" value="all" class="button">Check All</button>
+                                <button name="dellink" value="all" class="btn-delete"
+                                        onclick="return confirmSubmission('delete all');">Delete All
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            </form>
+
+        </div>
+    {% else %}
+        <div style="position: relative; left:0; font-size: 20px;">
+            Select session first!
+        </div>
+    {% endif %}
+
+
+</main>
+<script>
+    document.querySelector("#image-file").onchange = function () {
+        document.querySelector("#name-file").textContent = this.files[0].name;
+    }
+
+    /*        document.querySelector("#domain-file").onchange = function(){
+              document.querySelector("#domain-name").textContent = this.files[0].name;
+            }
+            document.querySelector(".domain-file1").onchange = function(){
+              document.querySelector("#domain-name1").textContent = this.files[0].name;
+            }
+    */
+    document.querySelector(".i1").onchange = function () {
+        document.querySelector(".l1").textContent = this.files[0].name;
+    }
+    document.querySelector(".i2").onchange = function () {
+        document.querySelector(".l2").textContent = this.files[0].name;
+    }
+
+    function confirmSubmission(action) {
+        return confirm(`Are you sure you want to ${action}?`);
+    }
+</script>
+
+</body>
+</html>

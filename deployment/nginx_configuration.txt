@@ -1,0 +1,16 @@
+server {
+    listen 80;
+    server_name 91.240.118.210;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:///tmp/uwsgi.sock;
+    }
+
+    location /static/ {
+        alias /var/www/generator/staticfiles/;
+    }
+
+    error_log /var/www/generator/logs/nginx-error.log;
+    access_log /var/www/generator/logs/nginx-access.log;
+}

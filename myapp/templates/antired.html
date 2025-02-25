@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Link replace</h1>
+<main>
+    <div>
+        <div id="add_link">
+            <form method="POST">
+                {% csrf_token %}
+                <div id="input-group">
+                    <input id="link-value" name="value" type="text" placeholder="Enter link text" required>
+                    <button id="add-button" type="submit" name="action" value="add"
+                            onclick="return confirmSubmission('add new link');">Add
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="session_table" style="width:100%">
+            <table>
+                <thead>
+                <tr>
+                    <th>Link</th>
+                    <th>New link</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody id="parameter-table">
+                {% for i in links %}
+                    <tr>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <td>{{ i }}</td>
+                            <td><input name="value" type="text"><input name="key" value="{{ i }}" type="hidden"></td>
+                            <button type="submit" name="action" value="update" class="button"
+                                    onclick="return confirmSubmission('update');">Update
+                            </button>
+                            <button type="submit" name="action" value="delete" class="button"
+                                    onclick="return confirmSubmission('delete');">Delete
+                            </button>
+                        </form>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+
+</main>
+<script>
+    document.querySelector("#image-file").onchange = function () {
+        document.querySelector("#name-file").textContent = this.files[0].name;
+    }
+
+    /*        document.querySelector("#domain-file").onchange = function(){
+              document.querySelector("#domain-name").textContent = this.files[0].name;
+            }
+            document.querySelector(".domain-file1").onchange = function(){
+              document.querySelector("#domain-name1").textContent = this.files[0].name;
+            }
+    */
+    document.querySelector(".i1").onchange = function () {
+        document.querySelector(".l1").textContent = this.files[0].name;
+    }
+    document.querySelector(".i2").onchange = function () {
+        document.querySelector(".l2").textContent = this.files[0].name;
+    }
+
+    function confirmSubmission(action) {
+        return confirm(`Are you sure you want to ${action} the link?`);
+    }
+
+</script>
+<style>
+    #input-group {
+        display: flex;
+        align-items: center; /* Aligns items vertically centered */
+    }
+
+    #link-value {
+        margin-right: 10px; /* Adds space between input and button */
+        padding: 5px; /* Optional: Adds padding for better appearance */
+    }
+
+    #add-button {
+        padding: 5px 10px; /* Optional: Adds padding for better appearance */
+    }
+</style>
+</body>
+</html>

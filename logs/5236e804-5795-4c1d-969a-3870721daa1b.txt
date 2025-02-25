@@ -1,0 +1,14 @@
+Requesting a certificate for o2uk.peritoscontabeisbsb.com.br and 49 more domains
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/o2uk.peritoscontabeisbsb.com.br/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/o2uk.peritoscontabeisbsb.com.br/privkey.pem
+This certificate expires on 2024-03-06.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: >
+      bash -c "python manage.py migrate &&
+               python manage.py collectstatic --no-input &&
+               uwsgi --ini uwsgi.ini"
+    volumes:
+      - .:/app
+      - ./staticfiles:/app/staticfiles
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=myproject.settings
+      - STATIC_ROOT=/app/staticfiles
+      - STATIC_URL=/static/
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: mm_generator
+      POSTGRES_PASSWORD: mm_generator
+      POSTGRES_DB: mm_generator
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

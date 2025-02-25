@@ -1,0 +1,9 @@
+Requesting a certificate for stg-cfp.topmalioboro.com and 49 more domains
+
+Certbot failed to authenticate some domains (authenticator: webroot). The Certificate Authority reported these problems:
+  Domain: fra81-998a-gw-int.vpn.topmalioboro.com
+  Type:   dns
+  Detail: DNS problem: networking error looking up CAA for com
+
+Hint: The Certificate Authority failed to download the temporary challenge files created by Certbot. Ensure that the listed domains serve their content from the provided --webroot-path/-w and that files created there can be downloaded from the internet.
+
